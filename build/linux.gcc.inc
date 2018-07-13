@@ -34,6 +34,7 @@ LIBDL = -ldl
 
 CPLUS = g++
 CONLY = gcc
+C_AR  = ar
 LIB_LINK_FLAGS = $(DYLIB_KEY) -Wl,-soname=$(BUILDING_LIBRARY)
 LIBS += -lpthread -lrt
 LINK_FLAGS = -Wl,-rpath-link=. -rdynamic

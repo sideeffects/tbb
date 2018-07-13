@@ -90,16 +90,19 @@ def_prefix = $(if $(findstring 64,$(arch)),mac64,mac32)
 TBB.LST = $(tbb_root)/src/tbb/$(def_prefix)-tbb-export.lst
 TBB.DEF = $(TBB.LST:.lst=.def)
 TBB.DLL = libtbb$(CPF_SUFFIX)$(DEBUG_SUFFIX).$(DLL)
+TBB.A   = libtbb$(CPF_SUFFIX)$(DEBUG_SUFFIX).a
 TBB.LIB = $(TBB.DLL)
 LINK_TBB.LIB = $(TBB.LIB)
 
 MALLOC.DEF = $(MALLOC_ROOT)/$(def_prefix)-tbbmalloc-export.def
 MALLOC.DLL = libtbbmalloc$(DEBUG_SUFFIX).$(MALLOC_DLL)
+MALLOC.A   = libtbbmalloc$(DEBUG_SUFFIX).a
 MALLOC.LIB = $(MALLOC.DLL)
 LINK_MALLOC.LIB = $(MALLOC.LIB)
 
 MALLOCPROXY.DLL = libtbbmalloc_proxy$(DEBUG_SUFFIX).$(MALLOC_DLL)
 MALLOCPROXY.LIB = $(MALLOCPROXY.DLL)
+MALLOCPROXY.A = libtbbmalloc_proxy$(DEBUG_SUFFIX).a
 LINK_MALLOCPROXY.LIB = $(MALLOCPROXY.LIB)
 
 TEST_LAUNCHER=sh $(tbb_root)/build/test_launcher.sh $(largs)

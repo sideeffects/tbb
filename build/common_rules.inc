@@ -56,6 +56,7 @@ LINK_FLAGS += $(LDFLAGS)
 LIB_LINK_FLAGS += $(LDFLAGS)
 
 LIB_LINK_CMD ?= $(CPLUS) $(PIC_KEY)
+LIB_CMD ?= $(C_AR) cruvs
 ifeq ($(origin LIB_OUTPUT_KEY), undefined)
     LIB_OUTPUT_KEY = $(OUTPUT_KEY)
 endif
