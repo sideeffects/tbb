@@ -12,8 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-CPLUS ?= clang++
-CONLY ?= clang
+CPLUS ?= $(CXX)
+CONLY ?= $(CC)
+C_AR  ?= ar
 COMPILE_ONLY = -c -MMD
 PREPROC_ONLY = -E -x c++
 INCLUDE_KEY = -I
@@ -37,7 +38,7 @@ C_FLAGS = $(CPLUS_FLAGS)
 ifeq ($(cfg), release)
     CPLUS_FLAGS = -g -O2
 else
-    CPLUS_FLAGS = -g -O0 -DTBB_USE_DEBUG
+    CPLUS_FLAGS = -g -O0 -DTBB_USE_DEBUG -DTBB_DO_ASSERT=0
 endif
 
 CPLUS_FLAGS += -DUSE_PTHREAD $(ITT_NOTIFY)
@@ -46,6 +47,13 @@ ifeq (1,$(tbb_cpf))
 # For correct ucontext.h structures layout
 CPLUS_FLAGS += -D_XOPEN_SOURCE
 endif
+
+CPLUS_FLAGS += -arch $(MBSD_ARCH) \
+               -isysroot $(MBSD_SDK_PATH)  \
+               -mmacosx-version-min=$(MBSD_TARGET_VERSION)
+LIB_LINK_FLAGS += -arch $(MBSD_ARCH) \
+               -isysroot $(MBSD_SDK_PATH)  \
+               -mmacosx-version-min=$(MBSD_TARGET_VERSION)
 
 # For Clang, we add the option to support RTM intrinsics *iff* xtest is found in <immintrin.h>
 ifneq (,$(shell grep xtest `echo "\#include<immintrin.h>" | $(CONLY) -E -M - 2>&1 | grep immintrin.h` 2>/dev/null))
