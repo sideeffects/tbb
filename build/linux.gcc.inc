@@ -14,6 +14,7 @@
 
 CPLUS ?= g++
 CONLY ?= gcc
+C_AR  ?= ar
 COMPILE_ONLY = -c -MMD
 PREPROC_ONLY = -E -x c++
 INCLUDE_KEY = -I
