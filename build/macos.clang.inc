@@ -50,6 +50,11 @@ LIB_LINK_FLAGS += -arch $(MBSD_ARCH) \
                -isysroot $(MBSD_SDK_PATH)  \
                -mmacosx-version-min=$(MBSD_TARGET_VERSION)
 
+ifeq (1,$(tbb_cpf))
+# For correct ucontext.h structures layout
+CPLUS_FLAGS += -D_XOPEN_SOURCE
+endif
+
 # For Clang, we add the option to support RTM intrinsics *iff* xtest is found in <immintrin.h>
 ifneq (,$(shell grep xtest `echo "\#include<immintrin.h>" | $(CONLY) -E -M - 2>&1 | grep immintrin.h` 2>/dev/null))
     RTM_KEY = -mrtm
