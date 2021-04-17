@@ -43,6 +43,13 @@ endif
 
 CPLUS_FLAGS += -DUSE_PTHREAD $(ITT_NOTIFY)
 
+CPLUS_FLAGS += -arch $(MBSD_ARCH) \
+               -isysroot $(MBSD_SDK_PATH)  \
+               -mmacosx-version-min=$(MBSD_TARGET_VERSION)
+LIB_LINK_FLAGS += -arch $(MBSD_ARCH) \
+               -isysroot $(MBSD_SDK_PATH)  \
+               -mmacosx-version-min=$(MBSD_TARGET_VERSION)
+
 ifeq (1,$(tbb_cpf))
 # For correct ucontext.h structures layout
 CPLUS_FLAGS += -D_XOPEN_SOURCE
