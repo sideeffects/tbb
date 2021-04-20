@@ -290,7 +290,7 @@
     #define __TBB_CPP14_INTEGER_SEQUENCE_PRESENT            (_MSC_VER >= 1900)
     /* Variable templates are supported in VS2015 Update 2 or later */
     #define __TBB_CPP14_VARIABLE_TEMPLATES_PRESENT          (_MSC_FULL_VER >= 190023918 && (!__INTEL_COMPILER || __INTEL_COMPILER >= 1700))
-    #define __TBB_CPP17_DEDUCTION_GUIDES_PRESENT            (_MSVC_LANG >= 201703L && _MSC_VER >= 1914)
+    #define __TBB_CPP17_DEDUCTION_GUIDES_PRESENT            (!__clang__ && _MSVC_LANG >= 201703L && _MSC_VER >= 1914)
     #define __TBB_CPP17_INVOKE_RESULT_PRESENT               (_MSVC_LANG >= 201703L && _MSC_VER >= 1911)
 #else
     #define __TBB_CPP11_VARIADIC_TEMPLATES_PRESENT          __TBB_CPP11_PRESENT
