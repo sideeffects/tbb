@@ -444,6 +444,7 @@ const char* known_bytecodes[] = {
     "48894C24084883EC2848",   // debug _aligned_free 10.0
     "488BD1488D0D#*******E9", // _o_free(), ucrtbase.dll
     "E9ABFFFFFFCCCCCCCCCCCC", // _msize() in some win11 insider preview
+    "4885C9740D4883E1F8488B", // _aligned_free() in some win11 insider preview
  #if __TBB_OVERLOAD_OLD_MSVCR
     "48895C2408574883EC3049", // release _aligned_msize 9.0
     "4883EC384885C975",       // release _msize() 9.0
