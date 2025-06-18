@@ -389,7 +389,7 @@
 
 #if !defined(__TBB_SURVIVE_THREAD_SWITCH) && \
           (_WIN32 || _WIN64 || __APPLE__ || (defined(__unix__) && !__ANDROID__))
-    #define __TBB_SURVIVE_THREAD_SWITCH 1
+    #define __TBB_SURVIVE_THREAD_SWITCH 0
 #endif /* __TBB_SURVIVE_THREAD_SWITCH */
 
 #ifndef TBB_PREVIEW_FLOW_GRAPH_FEATURES
