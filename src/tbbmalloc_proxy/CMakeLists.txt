@@ -12,9 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-if (NOT BUILD_SHARED_LIBS)
-    return()
-endif()
+#if (NOT BUILD_SHARED_LIBS)
+#    return()
+#endif()
 
 add_library(tbbmalloc_proxy 
     function_replacement.cpp
