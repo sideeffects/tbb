@@ -70,6 +70,10 @@ project(TBB VERSION ${_tbb_ver_major}.${_tbb_ver_minor}.${_tbb_ver_patch} LANGUA
 unset(_tbb_ver_major)
 unset(_tbb_ver_minor)
 
+if (WIN32)
+    set(CMAKE_STATIC_LIBRARY_PREFIX lib)
+endif()
+
 include(CheckCXXCompilerFlag)
 include(GNUInstallDirs)
 include(CMakeDependentOption)
