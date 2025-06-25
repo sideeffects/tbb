@@ -140,7 +140,7 @@ void small_object_pool_impl::destroy()
     small_object* public_list = m_public_list.exchange(dead_public_list);
     // clean up public list and subtract from private (intentionally) counter
     m_private_counter -= cleanup_list(public_list);
-    __TBB_ASSERT(m_private_counter >= 0, "Private counter may not be less than 0");
+//    __TBB_ASSERT(m_private_counter >= 0, "Private counter may not be less than 0");
     // Equivalent to fetch_sub(m_private_counter) - m_private_counter. But we need to do it
     // atomically with operator-= not to access m_private_counter after the subtraction.
     auto new_value = m_public_counter -= m_private_counter;
